@@ -102,16 +102,33 @@ ssh-manage add --name "Proxmox host" --dest root@192.168.0.200 --alias proxmox -
 
 ## Sync on Another Device
 
-On a new Mac:
+Managed SSH aliases are portable because the private keys and alias metadata live in Proton Pass, not only on the original machine. On a new Mac, install the CLI, authenticate Proton Pass CLI, start the Proton Pass SSH agent, then rebuild local OpenSSH config from the Proton metadata.
+
+On the new device:
 
 ```bash
+git clone https://github.com/PhillipMogensen/ssh-manage.git
+cd ssh-manage
+./scripts/install-global.sh
 pass-cli login
 ssh-manage install --vault "SSH Keys"
 ssh-manage sync --vault "SSH Keys"
 ssh proxmox
 ```
 
-`sync` reads managed Proton SSH key items and recreates the local alias config and public-key selector files.
+`sync` reads managed Proton SSH key items and recreates:
+
+- `~/.ssh/ssh-manage/config`
+- `~/.ssh/ssh-manage/keys/<alias>.pub`
+- the `Include ~/.ssh/ssh-manage/config` line in `~/.ssh/config`
+
+The generated public-key files are selector files only. OpenSSH uses them to choose the matching private key from the Proton Pass SSH agent, so private keys are not written to disk on the new device.
+
+If you add or update aliases on one machine, run this on the other machines:
+
+```bash
+ssh-manage sync --vault "SSH Keys"
+```
 
 ## Commands
 
