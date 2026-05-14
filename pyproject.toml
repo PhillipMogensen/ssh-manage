@@ -1,0 +1,29 @@
+[project]
+name = "ssh-manage"
+version = "0.1.0"
+description = "Manage SSH aliases and Proton Pass-backed SSH keys from the command line."
+readme = "README.md"
+requires-python = ">=3.10"
+authors = [{ name = "Phillip Bredahl" }]
+dependencies = []
+
+[project.optional-dependencies]
+bootstrap = ["paramiko>=3.4"]
+dev = ["pytest>=8.0", "ruff>=0.6"]
+
+[project.scripts]
+ssh-manage = "ssh_manage.cli:main"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/ssh_manage"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
