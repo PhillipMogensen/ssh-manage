@@ -2,7 +2,7 @@
 set -eu
 
 REPO_URL="${SSH_MANAGE_REPO_URL:-https://github.com/PhillipMogensen/ssh-manage.git}"
-PACKAGE_SPEC="ssh-manage[bootstrap] @ git+${REPO_URL}"
+PACKAGE_SPEC="ssh-manage @ git+${REPO_URL}"
 
 info() {
   printf '%s\n' "$*"

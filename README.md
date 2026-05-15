@@ -56,7 +56,7 @@ From a cloned repo:
 Or directly with `uv`:
 
 ```bash
-uv tool install "ssh-manage[bootstrap] @ git+https://github.com/PhillipMogensen/ssh-manage.git" --force
+uv tool install "ssh-manage @ git+https://github.com/PhillipMogensen/ssh-manage.git" --force
 ```
 
 This installs `ssh-manage` into uv's tool bin directory, normally `~/.local/bin`, so it can run from any directory. If your shell cannot find it afterward, run:
@@ -181,7 +181,7 @@ These fields are what make `ssh-manage sync` work on another device.
 ## Development
 
 ```bash
-uv sync --extra dev --extra bootstrap
+uv sync --extra dev
 uv run pytest
 uv run ruff check .
 ```

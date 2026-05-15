@@ -2,7 +2,7 @@
 set -eu
 
 cd "$(dirname "$0")/.."
-uv tool install --editable ".[bootstrap]" --force
+uv tool install --editable "." --force
 uv tool update-shell || true
 
 echo "Installed ssh-manage globally."
