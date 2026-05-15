@@ -5,6 +5,7 @@ description = "Manage SSH aliases and Proton Pass-backed SSH keys from the comma
 readme = "README.md"
 requires-python = ">=3.10"
 authors = [{ name = "Phillip Bredahl" }]
+license = "MIT"
 dependencies = []
 
 [project.optional-dependencies]

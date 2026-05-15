@@ -34,16 +34,29 @@ Linux support is intentionally not first-class yet. The code is structured so a 
 
 ## Install as a Global Command
 
-From this repo:
+Recommended install:
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/PhillipMogensen/ssh-manage/main/install.sh | sh
+```
+
+Homebrew install:
+
+```bash
+brew tap PhillipMogensen/tap
+brew install ssh-manage
+```
+
+From a cloned repo:
 
 ```bash
 ./scripts/install-global.sh
 ```
 
-Or directly:
+Or directly with `uv`:
 
 ```bash
-uv tool install --editable ".[bootstrap]" --force
+uv tool install "ssh-manage[bootstrap] @ git+https://github.com/PhillipMogensen/ssh-manage.git" --force
 ```
 
 This installs `ssh-manage` into uv's tool bin directory, normally `~/.local/bin`, so it can run from any directory. If your shell cannot find it afterward, run:
